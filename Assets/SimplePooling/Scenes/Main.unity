@@ -418,6 +418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30586c7aa17b4404f84c4812f186cebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolData: {fileID: 11400000, guid: 5282e55f5c5ae5948b97b2609846cd86, type: 2}
+  tempGO: {fileID: 0}
 --- !u!1 &1981818848
 GameObject:
   m_ObjectHideFlags: 0

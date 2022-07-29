@@ -3,20 +3,26 @@ using UnityEngine;
 
 public class BulletFactory : MonoBehaviour
 {
-    private ObjectPool<Bullet> bulletPool;
+    public SimplePoolData poolData;
+
+    public GameObject tempGO;
+
+    private SimplePool<Bullet> bulletPool;
 
     private void Start()
     {
-        bulletPool = new ObjectPool<Bullet>();       
+        bulletPool = new SimplePool<Bullet>(poolData);
+
+        bulletPool.Init();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            var bullet = bulletPool.Get();
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    var bullet = bulletPool.Get();
 
-            bulletPool.Release(bullet);
-        }
+        //    bulletPool.Release();
+        //}
     }
 }
