@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d69a0d1460b26df47ad7f9c6b49816d8, type: 3}
-  m_Name: Bullet Pool Data
+  m_Name: Bullet Pool
   m_EditorClassIdentifier: 
   prefab: {fileID: 2649203704594992881, guid: 6c31e1ea8c59dbd49b001cb9366b288b, type: 3}
   startSize: 10

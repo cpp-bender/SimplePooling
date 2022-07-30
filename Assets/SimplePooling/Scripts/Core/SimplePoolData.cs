@@ -10,7 +10,6 @@ namespace SimplePooling
         [SerializeField] int refillSize;
         [SerializeField] string parentName;
         [SerializeField] string selfName;
-        [SerializeField] bool lazy;
 
         public GameObject Prefab { get => prefab; }
         public int StartSize { get => startSize; }

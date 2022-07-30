@@ -1,11 +1,10 @@
+using System.Collections;
 using SimplePooling;
 using UnityEngine;
 
 public class BulletFactory : MonoBehaviour
 {
     public SimplePoolData poolData;
-
-    public GameObject tempGO;
 
     private SimplePool<Bullet> bulletPool;
 
@@ -16,13 +15,20 @@ public class BulletFactory : MonoBehaviour
         bulletPool.Init();
     }
 
+    private IEnumerator Routine()
+    {
+        var bullet = bulletPool.Get();
+
+        yield return new WaitForSeconds(3f);
+
+        bulletPool.Release(bullet);
+    }
+
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    var bullet = bulletPool.Get();
-
-        //    bulletPool.Release();
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(Routine());
+        }
     }
 }
