@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2649203704594992892}
   - component: {fileID: 2649203704594992895}
   - component: {fileID: 2649203704594992894}
-  - component: {fileID: 5037187841807784907}
+  - component: {fileID: 2370562741278474719}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5037187841807784907
+--- !u!114 &2370562741278474719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
