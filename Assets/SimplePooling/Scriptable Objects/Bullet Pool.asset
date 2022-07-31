@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Bullet Pool
   m_EditorClassIdentifier: 
   prefab: {fileID: 2649203704594992881, guid: 6c31e1ea8c59dbd49b001cb9366b288b, type: 3}
-  startSize: 10
+  startSize: 100
   refillSize: 1
-  parentName: Bullets
+  parentName: Bullet Pool
   selfName: Bullet
-  lazy: 0
