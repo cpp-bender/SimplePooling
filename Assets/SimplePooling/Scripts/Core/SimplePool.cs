@@ -11,37 +11,55 @@ namespace SimplePooling
 
         public SimplePool(SimplePoolData simplePoolData)
         {
-            objs = new List<T>();
+            Setup();
 
-            poolData = simplePoolData;
+            Init();
 
-            parent = new GameObject(simplePoolData.ParentName).transform;
-        }
-
-        public void Init()
-        {
-            for (int i = 0; i < poolData.StartSize; i++)
+            void Setup()
             {
-                T obj = Object.Instantiate(poolData.Prefab).GetComponent<T>();
+                objs = new List<T>();
 
-                obj.name = poolData.SelfName + $" {i + 1}";
+                poolData = simplePoolData;
 
-                obj.gameObject.SetActive(false);
+                parent = new GameObject(simplePoolData.ParentName).transform;
+            }
 
-                obj.transform.SetParent(parent);
+            void Init()
+            {
+                for (int i = 0; i < poolData.StartSize; i++)
+                {
+                    T obj = Object.Instantiate(poolData.Prefab).GetComponent<T>();
 
-                objs.Add(obj);
+                    obj.name = poolData.SelfName;
+
+                    obj.gameObject.SetActive(false);
+
+                    obj.transform.SetParent(parent);
+
+                    objs.Add(obj);
+                }
             }
         }
 
         public T Get()
         {
-            T lastObj = objs[objs.Count - 1];
-
-            if (lastObj == null)
+            if (objs.Count == 0)
             {
-                //TODO: Handle here
+                for (int i = 0; i < poolData.RefillSize; i++)
+                {
+                    T obj = Object.Instantiate(poolData.Prefab).GetComponent<T>();
+
+                    obj.name = poolData.SelfName;
+
+                    obj.gameObject.SetActive(false);
+
+                    obj.transform.SetParent(parent);
+
+                    objs.Add(obj);
+                }
             }
+
+            T lastObj = objs[objs.Count - 1];
 
             lastObj.gameObject.SetActive(true);
 
