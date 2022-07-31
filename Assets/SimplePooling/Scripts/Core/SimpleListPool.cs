@@ -3,41 +3,34 @@ using UnityEngine;
 
 namespace SimplePooling
 {
-    public class SimplePool<T> : ISimplePool<T> where T : MonoBehaviour
+    public class SimpleListPool<T> : BaseSimplePool<T>, ISimplePool<T> where T : MonoBehaviour
     {
         private List<T> objs;
-        private SimplePoolData poolData;
-        private Transform parent;
 
-        public SimplePool(SimplePoolData simplePoolData)
+        public SimpleListPool(SimplePoolData simplePoolData) : base(simplePoolData)
         {
-            Setup();
 
-            Init();
+        }
 
-            void Setup()
+        protected override void Init(SimplePoolData simplePoolData)
+        {
+            objs = new List<T>();
+
+            poolData = simplePoolData;
+
+            parent = new GameObject(simplePoolData.ParentName).transform;
+
+            for (int i = 0; i < poolData.StartSize; i++)
             {
-                objs = new List<T>();
+                T obj = Object.Instantiate(poolData.Prefab).GetComponent<T>();
 
-                poolData = simplePoolData;
+                obj.name = poolData.SelfName;
 
-                parent = new GameObject(simplePoolData.ParentName).transform;
-            }
+                obj.gameObject.SetActive(false);
 
-            void Init()
-            {
-                for (int i = 0; i < poolData.StartSize; i++)
-                {
-                    T obj = Object.Instantiate(poolData.Prefab).GetComponent<T>();
+                obj.transform.SetParent(parent);
 
-                    obj.name = poolData.SelfName;
-
-                    obj.gameObject.SetActive(false);
-
-                    obj.transform.SetParent(parent);
-
-                    objs.Add(obj);
-                }
+                objs.Add(obj);
             }
         }
 
