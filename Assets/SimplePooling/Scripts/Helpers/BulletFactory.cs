@@ -10,7 +10,7 @@ public class BulletFactory : MonoBehaviour
 
     private void Start()
     {
-        bulletPool = new SimplePool<Bullet>(poolData);
+        bulletPool = new SimpleStackPool<Bullet>(poolData);
     }
 
     private IEnumerator Routine()
