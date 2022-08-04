@@ -453,3 +453,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolData: {fileID: 11400000, guid: 5282e55f5c5ae5948b97b2609846cd86, type: 2}
+  shootDelay: 0.276

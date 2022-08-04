@@ -2,9 +2,10 @@ using System.Collections;
 using SimplePooling;
 using UnityEngine;
 
-public class Factory : MonoBehaviour
+public class BulletFactory : MonoBehaviour
 {
     public SimplePoolData poolData;
+    [Range(.1f, 1f)] public float shootDelay;
 
     private ISimplePool<Bullet> bulletPool;
 
@@ -15,6 +16,13 @@ public class Factory : MonoBehaviour
 
     private IEnumerator Start()
     {
+        yield return new WaitForSeconds(2f);
+
+        StartCoroutine(ShootRoutine());
+    }
+
+    private IEnumerator ShootRoutine()
+    {
         while (true)
         {
             var bullet = bulletPool.Get();
@@ -23,7 +31,7 @@ public class Factory : MonoBehaviour
 
             StartCoroutine(ReleaseRoutine(bullet));
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(shootDelay);
 
             yield return null;
         }
